@@ -1,0 +1,27 @@
+{
+  "name": "po-cli",
+  "version": "1.0.11",
+  "description": "po | short commands for polymer-cli",
+  "main": "bin/index.js",
+   "engines":      {
+    "node":       ">=0.4.0"
+  },
+  "scripts": {
+    "test": "node ./bin/index"
+  },
+  "bin": {
+    "po": "./bin/index.js"
+  },
+  "author": {
+    "name": "Roman Zhivotyagin",
+    "url": "http://romanzhivo.com"
+  },
+  "keywords": [
+    "Polymer",
+    "polymer-cli",
+    "po-cli",
+    "CLI",
+    "short"
+  ],
+  "license": "MIT"
+}
