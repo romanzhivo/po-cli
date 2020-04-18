@@ -67,38 +67,33 @@ const child = exec(targetCommands, (error, stdout, stderr) => {
 child.stdin.setEncoding('utf-8');
 
 
-if (semanticArgument === 'in') {
-    process.stdin.pipe(child.stdin);
-    child.stdout.pipe(process.stdout);
 
-    readline.emitKeypressEvents(process.stdin);
-    process.stdin.setRawMode(true);
+process.stdin.pipe(child.stdin);
+child.stdout.pipe(process.stdout);
+
+readline.emitKeypressEvents(process.stdin);
+process.stdin.setRawMode(true);
 
 
-    process.stdin.on('keypress', (a, key) => {
-        if (key.ctrl && key.name === 'c') {
-            child.kill();
-            process.exit();
-        }
-    });
+process.stdin.on('keypress', (a, key) => {
+    if (key.ctrl && key.name === 'c') {
+        child.kill();
+        process.exit();
+    }
+});
 
-    child.stdout.on('end', ()=>{
-        setTimeout(() => {
-            process.exit();
-        }, 500);
-    });
-} else {
+child.stdout.on('end', () => {
+    setTimeout(() => {
+        process.exit();
+    }, 100);
+});
 
-    child.stdout.on('data', (message) => {
-        console.log(message);
-    });
-}
 
 
 function showHelpInfo() {
     let spaceNumber = 0;
 
-    console.log('Доступные команды: \n');
+    console.log('Available commands: \n');
     console.log('-------------');
     console.log(`${pjson.description}\nверс. ${pjson.version}\n`);
 
