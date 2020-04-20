@@ -1,6 +1,6 @@
 {
   "name": "po-cli",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "po | short commands for polymer-cli",
   "main": "bin/index.js",
   "engines": {

@@ -72,7 +72,10 @@ process.stdin.pipe(child.stdin);
 child.stdout.pipe(process.stdout);
 
 readline.emitKeypressEvents(process.stdin);
-process.stdin.setRawMode(true);
+if (semanticArgument !== 's') {
+    process.stdin.setRawMode(true);
+}
+
 
 
 process.stdin.on('keypress', (a, key) => {
